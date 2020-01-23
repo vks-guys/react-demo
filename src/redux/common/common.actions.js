@@ -14,6 +14,10 @@ const dispatchAction = (dispatch, type, data) => {
     });
 };
 
+
+/**
+ * 
+ */
 export const loadingShow = () => async dispatch => {
     dispatchAction(dispatch, commonTypes.LOADING_SHOW, true);
 }
@@ -23,10 +27,29 @@ export const loadingHide = () => async dispatch => {
 }
 
 
-export const notificationShow = (message) => async dispatch => {
-    dispatchAction(dispatch, commonTypes.NOTIFICATION_SHOW, message);
+
+/**
+ * 
+ * @param {*} data 
+ */
+export const notificationShow = (data) => async dispatch => {
+    dispatchAction(dispatch, commonTypes.NOTIFICATION_SHOW, data);
 }
 
-export const notificationHide = (message) => async dispatch => {
-    dispatchAction(dispatch, commonTypes.NOTIFICATION_HIDE, message);
+export const notificationHide = () => async dispatch => {
+    dispatchAction(dispatch, commonTypes.NOTIFICATION_HIDE, false);
+}
+
+
+
+/**
+ * 
+ * @param {*} data 
+ */
+export const errorShow = (data) => async dispatch => {
+    dispatchAction(dispatch, commonTypes.ERROR_SHOW, data);
+}
+
+export const errorHide = (message) => async dispatch => {
+    dispatchAction(dispatch, commonTypes.ERROR_HIDE, false);
 }
