@@ -21,7 +21,6 @@ export const getDashboardList = () => async dispatch => {
         const data = await Get(`${config.BASE_URL}posts`);
 
         dispatchAction(dispatch, dashboardTypes.DASHBOARD_LIST, data);
-
     } catch (error) {
 
     }

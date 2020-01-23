@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getDashboardList, getDashboardById } from '../../redux/dashboard/dashboard.actions';
+import { loadingShow, loadingHide } from '../../redux/common/common.actions';
 import "./dashboard.styles.scss"
 import { Button, Success, Input } from '../../components/common/button';
 
@@ -15,7 +16,11 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.props.getDashboardList();
+    this.props.loadingShow();
+    setTimeout(()=>{
+      this.props.getDashboardList();
+      this.props.loadingHide();
+    }, 10000)
   }
 
   onChangeHandler(event){
@@ -23,6 +28,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    console.log("props", this.props);
     return (
       <React.Fragment>
           <h1 className="d">Dashboard</h1>
@@ -51,9 +57,10 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   const { dashboardList, dashboardById } = { ...state.dashboard }
+  const { isLoader } = { ...state.common }
   return {
-    dashboardList, dashboardById
+    dashboardList, dashboardById, isLoader
   }
 }
 
-export default connect(mapStateToProps, { getDashboardList, getDashboardById })(Dashboard);
+export default connect(mapStateToProps, { getDashboardList, getDashboardById, loadingShow, loadingHide })(Dashboard);

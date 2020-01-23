@@ -11,7 +11,6 @@ const dashBoard = (state = initialState, action) => {
             }
         }
         case dashBoardTypes.DASHBOARD_LIST: {
-            console.log("dashboard-reducers", action)
             return {
                 ...state,
                 dashboardList: action.data
@@ -19,7 +18,6 @@ const dashBoard = (state = initialState, action) => {
         }
 
         case dashBoardTypes.DASHBOARD_BY_ID: {
-            console.log("dashboard-reducers-by-id", action)
             return {
                 ...state,
                 dashboardById: action.data
