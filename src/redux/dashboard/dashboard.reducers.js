@@ -14,7 +14,7 @@ const dashBoard = (state = initialState, action) => {
             console.log("dashboard-reducers", action)
             return {
                 ...state,
-                data: action.data
+                dashboardList: action.data
             }
         }
 
@@ -22,7 +22,7 @@ const dashBoard = (state = initialState, action) => {
             console.log("dashboard-reducers-by-id", action)
             return {
                 ...state,
-                dataById: action.data
+                dashboardById: action.data
             }
         }
         default:{

@@ -1,24 +1,32 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+export const Button = styled.button`
     display: inline-block;
     font-weight: 400;
     text-align: center;
     white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: ${props => props.fontSize || '15px'};
+    color:${props => props.color || `red`};
     border-radius: .25rem;
-    transition: color .15s;
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
 `
 
-export default Button;
+export const Success = styled.button`
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: ${props => props.fontSize || '15px'};
+    color:${props => props.color || `red`};
+    border-radius: .25rem;
+`
+
+export const Input = styled.input`
+    padding: 0.5em;
+    margin: 0.5em;
+    color: ${props => props.inputColor || "palevioletred"};
+    background: papayawhip;
+    border: none;
+    border-radius: 3px;
+`;

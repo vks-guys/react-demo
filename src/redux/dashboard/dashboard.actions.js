@@ -1,5 +1,6 @@
 import * as dashboardTypes from './dashboard.types';
-import axios from 'axios';
+import { Get } from '../../services/services.data';
+import { config } from '../../config';
 
 /**
  * 
@@ -15,17 +16,22 @@ const dispatchAction = (dispatch, type, data) => {
     });
 };
 
+export const getDashboardList = () => async dispatch => {
+    try {
+        const data = await Get(`${config.BASE_URL}posts`);
+        console.log("dasboard-actions", data);
+        dispatchAction(dispatch, dashboardTypes.DASHBOARD_LIST, data);
+    } catch (error) {
 
-export const getList = () => async dispatch => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.data;
-    console.log("dasboard-actions", data);
-    dispatchAction(dispatch, dashboardTypes.DASHBOARD_LIST, data);
+    }
 }
 
-export const getDataById = (id) => async dispatch => {
-    const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    const data = await response.data;
-    console.log("dasboard-actions-By-Id", data);
-    dispatchAction(dispatch, dashboardTypes.DASHBOARD_BY_ID, data);
+export const getDashboardById = (id) => async dispatch => {
+    try {
+        const data = await Get(`${config.BASE_URL}posts/${id}`);
+        console.log("dasboard-actions-By-Id", data);
+        dispatchAction(dispatch, dashboardTypes.DASHBOARD_BY_ID, data);
+    } catch (error) {
+
+    }
 }
