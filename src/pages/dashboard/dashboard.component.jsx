@@ -16,11 +16,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.props.loadingShow();
-    setTimeout(()=>{
-      this.props.getDashboardList();
-      this.props.loadingHide();
-    }, 10000)
+    this.props.getDashboardList();
   }
 
   onChangeHandler(event){
